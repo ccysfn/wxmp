@@ -6,12 +6,12 @@ var config = require('./config');
 const app = express();
 const port = 9002;
 const add='https://api.weixin.qq.com/sns/jscode2session';
-var v_data='gggg'
-
+var v_data='gggg';
+var jcode='jjjj';
 // 实现唯一的一个中间件，对于所有请求，都输出 "Response from express"
 app.get('/',(req,res)=>{
   //res.send(req.param('code'));
-	var jcode=req.param('code');
+	jcode=req.param('code');
    // res.send(jcode);
 	 axios.get('https://api.weixin.qq.com/sns/jscode2session',{
 		params:{
@@ -23,7 +23,7 @@ app.get('/',(req,res)=>{
 		}
 	
 	}).then(function(response){
-  console.log(response.data);//处理成功的函数 相当于success
+  //console.log(response.data);//处理成功的函数 相当于success
   v_data=response.data.openid
 })
 
