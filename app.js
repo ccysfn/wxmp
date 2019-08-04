@@ -22,9 +22,9 @@ app.get('/',(req,res)=>{
 		
 		}
 	
-	}).then(function(res){
-  console.log(res.data);//处理成功的函数 相当于success
-  v_data=res.data
+	}).then(function(response){
+  console.log(response.data);//处理成功的函数 相当于success
+  v_data=response.data
 })
 
 res.send(v_data);
