@@ -25,9 +25,7 @@ app.get('/', (req, res) => {
       }).then(({data}) => {
         var openId = data.openid
       }).then(() => {
-        res.send({
-          code: 0
-        })
+        res.send(openId)
       })
     } else {
       throw new Error('未知的授权类型')
