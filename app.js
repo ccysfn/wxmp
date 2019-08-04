@@ -11,7 +11,8 @@ const add='https://api.weixin.qq.com/sns/jscode2session';
 app.get('/',(req,res)=>{
   //res.send(req.param('code'));
 	var jcode=req.param('code');
-	axios.get('https://api.weixin.qq.com/sns/jscode2session',{
+    res.send(jcode);
+	/* axios.get('https://api.weixin.qq.com/sns/jscode2session',{
 		params:{
 			appid:config.appId,
 			secret:config.appSecret,
@@ -26,7 +27,7 @@ app.get('/',(req,res)=>{
 	}).then(() => {
         res.send({
           code: 0
-        })
+        }) */
    
 
 }).listen(port);
