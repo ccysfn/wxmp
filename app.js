@@ -1,37 +1,39 @@
-// 引用 express 来支持 HTTP Server 的实现
+
 const express = require('express');
 const request=require('request');
 var axios=require('axios');
-// 创建一个 express 实例
+var config = require('./config');
 const app = express();
-const id='wx9c317e7b510ea0fc';
-const appsecret='81521afadfbd64b90ae2090558463f0c';
+const port = 9002;
 const add='https://api.weixin.qq.com/sns/jscode2session';
-const grant='authorization_code';
+
 // 实现唯一的一个中间件，对于所有请求，都输出 "Response from express"
-app.get('/',function(req,res){
+app.get('/',(req,res)=>{
   //res.send(req.param('code'));
 	var jcode=req.param('code');
 	axios.get('https://api.weixin.qq.com/sns/jscode2session',{
 		params:{
-			appid:id,
-			secret:appsecret,
+			appid:config.appId,
+			secret:config.appSecret,
 			js_code:jcode,
 			grant_type:'authorization_code'
 		
 		}
 	
-	}).then((function(response){
-	console.log(response)
-	
-	})
+	}).then(({data})=>{
+	var openId = data.openid
+	console.log('success')
+	}).then(() => {
+        res.send({
+          code: 0
+        })
    
 
-});
+}).listen(port);
 
 // 监听端口，等待连接
-const port = 9002;
-app.listen(port);
+
+
 
 // 输出服务器启动日志
-console.log(`Server listening at http://127.0.0.1:${port}`);
+//console.log(`Server listening at http://127.0.0.1:${port}`);
