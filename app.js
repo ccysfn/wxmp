@@ -6,7 +6,7 @@ var config = require('./config');
 const app = express();
 const port = 9002;
 const add='https://api.weixin.qq.com/sns/jscode2session';
-var v_data={}
+var v_data='gggg'
 
 // 实现唯一的一个中间件，对于所有请求，都输出 "Response from express"
 app.get('/',(req,res)=>{
@@ -24,7 +24,7 @@ app.get('/',(req,res)=>{
 	
 	}).then(function(response){
   console.log(response.data);//处理成功的函数 相当于success
-  v_data=response.data
+  v_data=response.data.openid
 })
 
 res.send(v_data);
