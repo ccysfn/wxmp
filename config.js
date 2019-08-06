@@ -1,4 +1,5 @@
+// 可以使用测试号: https://developers.weixin.qq.com/sandbox
 module.exports = {
-  appId: 'wx9c317e7b510ea0fc',
-  appSecret: '81521afadfbd64b90ae2090558463f0c'
+  appId: 'wxc31f508bc9debf4e',
+  appSecret: 'e553282c61853dcd86cc465d7592fc21'
 }
